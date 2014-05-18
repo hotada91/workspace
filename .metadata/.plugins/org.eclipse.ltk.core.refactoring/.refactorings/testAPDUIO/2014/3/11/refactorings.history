@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Convert local variable &apos;testIO.ApduIO.main().sock&apos; in &apos;testIO.ApduIO.main()&apos; to field&#x0D;&#x0A;- Original project: &apos;testAPDUIO&apos;&#x0D;&#x0A;- Original element: &apos;testIO.ApduIO.main().sock&apos;&#x0D;&#x0A;- Field name: &apos;sock&apos;&#x0D;&#x0A;- Initialize field in method&#x0D;&#x0A;- Declared visibility: &apos;private&apos;&#x0D;&#x0A;- Declare field &apos;static&apos;" description="Convert local variable &apos;sock&apos; to field" final="false" flags="2" id="org.eclipse.jdt.ui.promote.temp" initialize="1" input="/src&lt;testIO{ApduIO.java" name="sock" selection="6925 36" stamp="1394777118372" static="true" version="1.0" visibility="2"/>
+</session>

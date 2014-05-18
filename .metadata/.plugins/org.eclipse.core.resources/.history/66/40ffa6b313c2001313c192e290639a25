@@ -1,0 +1,144 @@
+package healthcare;
+
+import com.sun.javacard.crypto.w;
+
+import javacard.framework.APDU;
+import javacard.framework.Applet;
+import javacard.framework.ISO7816;
+import javacard.framework.ISOException;
+import javacard.framework.OwnerPIN;
+import javacard.framework.Util;
+import javacardx.framework.tlv.BERTLV;
+import javacardx.framework.tlv.ConstructedBERTLV;
+
+public class HealthCareApplet extends Applet {	
+	// code of CLA
+	public final byte Healthcare_CLA = (byte) 0x80;
+
+	// code of INS
+	public final byte SAVE_CARD_INFO_INS = (byte) 0x01;
+	public final byte EDIT_CARD_INFO_INS = (byte) 0x05;
+	public final byte READ_PERSONAL_INFO_INS = (byte) 0x02;
+	public final byte READ_HEALTH_CARE_INFO_INS = (byte) 0x03;
+	public final byte VERIFY_PIN_INS = (byte) 0x04;
+
+	// SIZE
+	public final byte PIN_SIZE = (byte) 0x06;
+	public final byte MAX_RECORD_OF_DIAGNOSIS = (byte) 0x0A;
+	public final byte MAX_RECORD_OF_MEDICINE = (byte) 0x0A;
+
+	// ERROR CODE
+	public final short PIN_IS_WRONG_SW = (short) 0x0460;
+	public final short PIN_IS_INVALID_SW = (short) 0x0461;
+	public final short OUT_OF_MEMORY = (short) 0x0360;
+
+	//PIN	
+	final static byte[] DEFAULT_PIN = {(byte)1,(byte)2,(byte)3,(byte)4,(byte)5,(byte)6};
+	private static final short SW_PIN_FAILED = 0; 
+	private static OwnerPIN pin;
+	
+	// Information data
+	private BERTLV data;
+	private HealthCareApplet() {
+		// create and set the PIN object for the card owner
+	    pin = new OwnerPIN(PIN_SIZE, PIN_SIZE);
+	    pin.update(DEFAULT_PIN, (short)(0), PIN_SIZE);
+		register();
+	}
+
+	public static void install(byte bArray[], short bOffset, byte bLength)
+			throws ISOException {
+		new HealthCareApplet();
+	}
+
+	public void process(APDU apdu) throws ISOException {
+		// TODO Auto-generated method stub
+		byte[] buffer = apdu.getBuffer();
+		if (apdu.isISOInterindustryCLA()) {
+			if (buffer[ISO7816.OFFSET_INS] == (byte) (0xA4)) {
+				return;
+			}
+			ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
+		}
+		if (buffer[ISO7816.OFFSET_CLA] != Healthcare_CLA){
+			ISOException.throwIt(ISO7816.SW_CLA_NOT_SUPPORTED);
+		}
+		byte ins = buffer[ISO7816.OFFSET_INS];
+		switch (ins) {
+		case READ_HEALTH_CARE_INFO_INS:
+			readHealthCareInfo(apdu);
+			break;
+		case SAVE_CARD_INFO_INS:
+			saveCardInfo(apdu);
+			break;
+		case EDIT_CARD_INFO_INS:
+			editCardInfo(apdu);
+			break;
+		default:
+			ISOException.throwIt(ISO7816.SW_INS_NOT_SUPPORTED);
+		}
+	}
+
+	private void editCardInfo(APDU apdu) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void saveCardInfo(APDU apdu) {
+		// TODO Auto-generated method stub
+		/* get information from apdu params
+		 * 0->63: name
+		 * 64->79: CMND
+		 * 80->89: birthday
+		 * 90->92: Blood class
+		 */
+		byte[] buffer = apdu.getBuffer();
+		byte dataLengths = buffer[ISO7816.OFFSET_LC];
+		byte byteReads = (byte) (apdu.setIncomingAndReceive());				
+		info = ConstructedBERTLV.getInstance(buffer, (short) 0, byteReads);	
+		
+		//save to object Information
+	}
+
+	private void readHealthCareInfo(APDU apdu) {
+		byte[] buffer = apdu.getBuffer();		
+		short le = apdu.setOutgoing();
+//		if (le != Information.INFO_TOTAL_SIZE){
+//			ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
+//		}		
+		info.getSendBytes(buffer);
+		apdu.setOutgoingLength(Information.INFO_TOTAL_SIZE);
+		apdu.sendBytes((short) 0, Information.INFO_TOTAL_SIZE);		
+	}
+
+	public void setPinCode(APDU apdu) {
+		byte[] buffer = apdu.getBuffer();
+		short lc = buffer[ISO7816.OFFSET_LC];
+		if (lc != PIN_SIZE * 2) {
+			ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
+		}
+		if (!pin.check(buffer, ISO7816.OFFSET_CDATA, PIN_SIZE)){
+			short tries = pin.getTriesRemaining();
+	        ISOException.throwIt( (short) (SW_PIN_FAILED + tries));  // send error counter in APDU back
+		}
+		else{
+			pin.update(buffer, PIN_SIZE, PIN_SIZE);
+			ISOException.throwIt(ISO7816.SW_NO_ERROR);			
+		}
+	}
+
+	public void verifyPinCode(APDU apdu) {
+		byte[] buffer = apdu.getBuffer();
+		short lc = buffer[ISO7816.OFFSET_LC];
+		if (lc != PIN_SIZE) {
+			ISOException.throwIt(ISO7816.SW_WRONG_LENGTH);
+		}
+		if (!pin.check(buffer, ISO7816.OFFSET_CDATA, PIN_SIZE)){
+			short tries = pin.getTriesRemaining();
+	        ISOException.throwIt( (short) (SW_PIN_FAILED + tries));  // send error counter in APDU back
+		}
+		else{
+			ISOException.throwIt(ISO7816.SW_NO_ERROR);
+		}
+	}
+}

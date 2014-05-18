@@ -1,0 +1,35 @@
+package healthcare;
+
+import javacard.framework.Util;
+
+public class Information {
+	public static final byte MAX_RECORD_OF_DIAGNOSIS = (byte) 0x0A;
+	public static final byte MAX_RECORD_OF_MEDICINE = (byte) 0x0A;
+	public static final byte MAX_INFO_NAME_SIZE = (byte) 64;
+	public static final byte MAX_INFO_CMND_SIZE = (byte) 16;
+	public static final byte MAX_INFO_BIRTHDAY_SIZE = (byte) 10;
+	public static final byte MAX_INFO_BLOOD_CLASS_SIZE = (byte) 3;
+	public static final byte MAX_INFO_TOTAL_SIZE = INFO_NAME_SIZE + INFO_CMND_SIZE + INFO_BIRTHDAY_SIZE +INFO_BLOOD_CLASS_SIZE;
+	public final byte CLUSTER_SIZE = 32;	
+	public  byte[] name;
+	public byte[] CMND;
+	public byte[] birthDay;
+	public byte[] passport;
+	public byte[] bloodClass;
+	public byte[] diagnosisHistory;
+	public byte[] medicineHistory;	
+	public Information(){
+		
+	}	
+	public void getSendBytes(byte[] sendBytes){
+		byte sendByteLength = INFO_BIRTHDAY_SIZE+INFO_BLOOD_CLASS_SIZE+INFO_CMND_SIZE+INFO_NAME_SIZE;		
+		byte offset = 0;
+		Util.arrayCopyNonAtomic(this.name,(byte)0,sendBytes,(byte)0,INFO_NAME_SIZE);
+		offset += INFO_NAME_SIZE;
+		Util.arrayCopyNonAtomic(this.CMND,(byte)0,sendBytes,(byte)offset,INFO_CMND_SIZE);
+		offset += INFO_CMND_SIZE;			
+		Util.arrayCopyNonAtomic(this.birthDay,(byte)0,sendBytes,(byte)offset,INFO_BIRTHDAY_SIZE);
+		offset += INFO_BIRTHDAY_SIZE;
+		Util.arrayCopyNonAtomic(this.name,(byte)0,sendBytes,(byte)offset,INFO_BLOOD_CLASS_SIZE);
+	}
+}

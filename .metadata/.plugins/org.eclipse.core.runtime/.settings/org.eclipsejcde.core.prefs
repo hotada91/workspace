@@ -1,0 +1,5 @@
+CREF_CL_OPTIONS_b=true
+CREF_CL_OPTIONS_nomeminfo=true
+CREF_CL_OPTIONS_s=true
+JAVA_CARD_PATH=B\:\\java_card_kit-2_2_2-windows\\java_card_kit-2_2_2\\java_card_kit-2_2_2-rr-bin-windows-do
+eclipse.preferences.version=1

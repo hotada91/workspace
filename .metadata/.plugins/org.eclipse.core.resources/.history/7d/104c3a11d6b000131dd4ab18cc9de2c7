@@ -1,0 +1,177 @@
+package CardForm;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.factories.FormFactory;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import java.awt.Insets;
+import javax.swing.JButton;
+import javax.swing.BoxLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+
+public class ApplicationForm {
+
+	private JFrame frame;
+	private JTextField NameInput;
+	private JTextField cmndInput;
+	private JTextField birthDateInput;
+	private JLabel birthDayLabel;
+	private JButton submitButton;
+	private JPasswordField passwordField;
+	private JPasswordField passwordField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ApplicationForm window = new ApplicationForm();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public ApplicationForm() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		frame.getContentPane().setLayout(gridBagLayout);
+		
+		JLabel NameLabel = new JLabel("Name");
+		GridBagConstraints gbc_NameLabel = new GridBagConstraints();
+		gbc_NameLabel.gridwidth = 2;
+		gbc_NameLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_NameLabel.gridx = 3;
+		gbc_NameLabel.gridy = 0;
+		frame.getContentPane().add(NameLabel, gbc_NameLabel);
+		
+		NameInput = new JTextField();
+		GridBagConstraints gbc_NameInput = new GridBagConstraints();
+		gbc_NameInput.gridwidth = 3;
+		gbc_NameInput.insets = new Insets(5, 5, 5, 5);
+		gbc_NameInput.fill = GridBagConstraints.HORIZONTAL;
+		gbc_NameInput.gridx = 7;
+		gbc_NameInput.gridy = 0;
+		frame.getContentPane().add(NameInput, gbc_NameInput);
+		NameInput.setColumns(10);
+		
+		JLabel cmndLabel = new JLabel("CMND");
+		GridBagConstraints gbc_cmndLabel = new GridBagConstraints();
+		gbc_cmndLabel.gridwidth = 2;
+		gbc_cmndLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_cmndLabel.gridx = 3;
+		gbc_cmndLabel.gridy = 1;
+		frame.getContentPane().add(cmndLabel, gbc_cmndLabel);
+		
+		cmndInput = new JTextField();
+		cmndLabel.setLabelFor(cmndInput);
+		GridBagConstraints gbc_cmndInput = new GridBagConstraints();
+		gbc_cmndInput.ipady = 5;
+		gbc_cmndInput.ipadx = 5;
+		gbc_cmndInput.gridwidth = 3;
+		gbc_cmndInput.insets = new Insets(5, 5, 5, 5);
+		gbc_cmndInput.fill = GridBagConstraints.HORIZONTAL;
+		gbc_cmndInput.gridx = 7;
+		gbc_cmndInput.gridy = 1;
+		frame.getContentPane().add(cmndInput, gbc_cmndInput);
+		cmndInput.setColumns(10);
+		
+		JLabel pinCodeLabel = new JLabel("PIN code");
+		GridBagConstraints gbc_pinCodeLabel = new GridBagConstraints();
+		gbc_pinCodeLabel.gridwidth = 2;
+		gbc_pinCodeLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_pinCodeLabel.gridx = 3;
+		gbc_pinCodeLabel.gridy = 2;
+		frame.getContentPane().add(pinCodeLabel, gbc_pinCodeLabel);
+		
+		passwordField = new JPasswordField();
+		GridBagConstraints gbc_passwordField = new GridBagConstraints();
+		gbc_passwordField.ipady = 5;
+		gbc_passwordField.ipadx = 5;
+		gbc_passwordField.gridwidth = 3;
+		gbc_passwordField.insets = new Insets(5, 5, 5, 5);
+		gbc_passwordField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordField.gridx = 7;
+		gbc_passwordField.gridy = 2;
+		frame.getContentPane().add(passwordField, gbc_passwordField);
+		
+		JLabel retypePincodeLabel = new JLabel("Retype PIN code");
+		GridBagConstraints gbc_retypePincodeLabel = new GridBagConstraints();
+		gbc_retypePincodeLabel.gridwidth = 2;
+		gbc_retypePincodeLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_retypePincodeLabel.gridx = 3;
+		gbc_retypePincodeLabel.gridy = 3;
+		frame.getContentPane().add(retypePincodeLabel, gbc_retypePincodeLabel);
+		
+		passwordField_1 = new JPasswordField();
+		GridBagConstraints gbc_passwordField_1 = new GridBagConstraints();
+		gbc_passwordField_1.ipady = 5;
+		gbc_passwordField_1.ipadx = 5;
+		gbc_passwordField_1.gridwidth = 3;
+		gbc_passwordField_1.insets = new Insets(5, 5, 5, 5);
+		gbc_passwordField_1.fill = GridBagConstraints.HORIZONTAL;
+		gbc_passwordField_1.gridx = 7;
+		gbc_passwordField_1.gridy = 3;
+		frame.getContentPane().add(passwordField_1, gbc_passwordField_1);
+		
+		birthDayLabel = new JLabel("Birth date");
+		GridBagConstraints gbc_birthDayLabel = new GridBagConstraints();
+		gbc_birthDayLabel.gridwidth = 2;
+		gbc_birthDayLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_birthDayLabel.gridx = 3;
+		gbc_birthDayLabel.gridy = 4;
+		frame.getContentPane().add(birthDayLabel, gbc_birthDayLabel);
+		
+		birthDateInput = new JTextField();
+		birthDayLabel.setLabelFor(birthDateInput);
+		GridBagConstraints gbc_birthDateInput = new GridBagConstraints();
+		gbc_birthDateInput.ipady = 5;
+		gbc_birthDateInput.ipadx = 5;
+		gbc_birthDateInput.gridwidth = 3;
+		gbc_birthDateInput.insets = new Insets(5, 5, 5, 5);
+		gbc_birthDateInput.fill = GridBagConstraints.HORIZONTAL;
+		gbc_birthDateInput.gridx = 7;
+		gbc_birthDateInput.gridy = 4;
+		frame.getContentPane().add(birthDateInput, gbc_birthDateInput);
+		birthDateInput.setColumns(10);
+		
+		submitButton = new JButton("Submit");
+		GridBagConstraints gbc_submitButton = new GridBagConstraints();
+		gbc_submitButton.anchor = GridBagConstraints.NORTH;
+		gbc_submitButton.insets = new Insets(20, 10, 5, 5);
+		gbc_submitButton.gridx = 7;
+		gbc_submitButton.gridy = 6;
+		frame.getContentPane().add(submitButton, gbc_submitButton);
+		frame.setVisible(true);
+	}
+
+}

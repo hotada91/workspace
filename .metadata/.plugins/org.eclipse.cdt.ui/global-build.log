@@ -1,0 +1,64 @@
+10:31:34 **** Rebuild of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o reserve.o "..\\reserve.c" 
+..\reserve.c:1:18: warning: extra tokens at end of #include directive [enabled by default]
+ #include<stdio.h>;
+                  ^
+..\reserve.c:2:19: warning: extra tokens at end of #include directive [enabled by default]
+ #include<stdlib.h>;
+                   ^
+..\reserve.c:3:19: warning: extra tokens at end of #include directive [enabled by default]
+ #include<string.h>;
+                   ^
+..\reserve.c:4:1: warning: initialization makes pointer from integer without a cast [enabled by default]
+ int* BLOCKXOR = { -1, -2, -3 };
+ ^
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c:4:1: warning: excess elements in scalar initializer [enabled by default]
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c:4:1: warning: excess elements in scalar initializer [enabled by default]
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c: In function 'main':
+..\reserve.c:18:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+gcc -o reserve.exe reserve.o 
+Info: Nothing to build for reserve
+10:33:24 **** Incremental Build of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o reserve.o "..\\reserve.c" 
+..\reserve.c:4:1: warning: initialization makes pointer from integer without a cast [enabled by default]
+ int* BLOCKXOR = { -1, -2, -3 };
+ ^
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c:4:1: warning: excess elements in scalar initializer [enabled by default]
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c:4:1: warning: excess elements in scalar initializer [enabled by default]
+..\reserve.c:4:1: warning: (near initialization for 'BLOCKXOR') [enabled by default]
+..\reserve.c: In function 'main':
+..\reserve.c:18:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+gcc -o reserve.exe reserve.o 
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: cannot open output file reserve.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+10:33:44 **** Incremental Build of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -o reserve.exe reserve.o 
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: cannot open output file reserve.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+10:37:22 **** Incremental Build of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -o reserve.exe reserve.o 
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: cannot open output file reserve.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+10:41:26 **** Incremental Build of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -o reserve.exe reserve.o 
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: cannot open output file reserve.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status
+10:42:33 **** Incremental Build of configuration Debug for project reserve ****
+Info: Internal Builder is used for build
+gcc -o reserve.exe reserve.o 
+c:/mingw/bin/../lib/gcc/mingw32/4.8.1/../../../../mingw32/bin/ld.exe: cannot open output file reserve.exe: Permission denied
+collect2.exe: error: ld returned 1 exit status

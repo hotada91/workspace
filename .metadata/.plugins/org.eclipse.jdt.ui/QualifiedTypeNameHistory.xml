@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="javacard.framework.APDU"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.OutputStream"/>
+<fullyQualifiedTypeName name="testIO.ApduIO.Option"/>
+<fullyQualifiedTypeName name="com.sun.javacard.apduio.CadDevice"/>
+<fullyQualifiedTypeName name="com.sun.javacard.apduio.CadClientInterface"/>
+<fullyQualifiedTypeName name="java.net.Socket"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.metal.MetalBorders.TextFieldBorder"/>
+<fullyQualifiedTypeName name="java.awt.Window"/>
+<fullyQualifiedTypeName name="java.awt.Component"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="java.awt.Label"/>
+<fullyQualifiedTypeName name="java.awt.TextField"/>
+<fullyQualifiedTypeName name="java.awt.Button"/>
+<fullyQualifiedTypeName name="javax.swing.JLabel"/>
+<fullyQualifiedTypeName name="javax.swing.JTextField"/>
+<fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+<fullyQualifiedTypeName name="com.sun.javacard.crypto.w"/>
+<fullyQualifiedTypeName name="javax.rmi.CORBA.Util"/>
+<fullyQualifiedTypeName name="java.util.concurrent.CopyOnWriteArraySet"/>
+<fullyQualifiedTypeName name="java.nio.file.CopyOption"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javacard.framework.Util"/>
+<fullyQualifiedTypeName name="healthcare.Information"/>
+<fullyQualifiedTypeName name="javacard.framework.OwnerPIN"/>
+<fullyQualifiedTypeName name="javacard.framework.ISOException"/>
+<fullyQualifiedTypeName name="javax.print.attribute.standard.MediaSize.ISO"/>
+<fullyQualifiedTypeName name="CardForm.ApplicationForm"/>
+<fullyQualifiedTypeName name="CardForm.ApduIO"/>
+<fullyQualifiedTypeName name="CardForm.Information"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="javacardx.framework.tlv.BERTLV"/>
+<fullyQualifiedTypeName name="javacardx.framework.tlv.ConstructedBERTLV"/>
+<fullyQualifiedTypeName name="javacard.framework.ISO7816"/>
+</qualifiedTypeNameHistroy>
